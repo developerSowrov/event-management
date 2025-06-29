@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+.active {
+  background-color: red;
+  color: white;
+}
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #f09819 0%,
+    #edde5d 51%,
+    #f09819 100%
+  );
+}
+
+.btn-grad {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.t {
+  background-image: linear-gradient(orange, yellow);
+  color: transparent;
+  background-clip: text;
+}
+.h {
+  /* background-image: linear-gradient(yellow, red); */
+  background-color: black;
+  color: transparent;
+  background-clip: text;
+}
+.b {
+  background-image: linear-gradient(
+    rgba(128, 128, 128, 0.9),
+    rgba(255, 255, 255, 0.137)
+  );
+}
