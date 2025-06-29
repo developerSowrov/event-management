@@ -9,12 +9,38 @@ const Login = () => {
   const [showPass, setShowPass] = useState(true);
   const emailRef = useRef();
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email");
-    const pass = form.get("password");
-    // login logic here
+    const password = form.get("password");
+
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("✅ " + data.message);
+
+        // 🟡 Save user in localStorage
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // 🟢 Redirect
+        navigate(location?.state?.from || "/");
+      } else {
+        alert("❌ " + data.message);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("❌ Something went wrong. Try again.");
+    }
   };
 
   return (

@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+const user = JSON.parse(localStorage.getItem("user"));
 
+const logOut = () => {
+  localStorage.removeItem("user");
+};
 const Navbar = () => {
   return (
     <div className="pb-3">
@@ -35,19 +39,21 @@ const Navbar = () => {
                 <NavLink to={"/"} className={"p-2 rounded-lg "}>
                   Home
                 </NavLink>
-                <NavLink to={"/event"} className={"p-2 rounded-lg "}>
-                  Event
-                </NavLink>
-                {/* {user && ( */}
-                <div className="flex flex-col">
-                  <NavLink to={"/add-event"} className={"p-2 rounded-lg "}>
-                    Add event{" "}
-                  </NavLink>
-                  <NavLink to={"/my-event"} className={"p-2 rounded-lg "}>
-                    My Event
-                  </NavLink>
-                </div>
-                {/* )} */}
+
+                {user && (
+                  <div className="flex flex-col">
+                    <NavLink to={"/event"} className={"p-2 rounded-lg "}>
+                      Event
+                    </NavLink>
+                    <NavLink to={"/add-event"} className={"p-2 rounded-lg "}>
+                      Add event{" "}
+                    </NavLink>
+
+                    <NavLink to={"/my-event"} className={"p-2 rounded-lg "}>
+                      My Event
+                    </NavLink>
+                  </div>
+                )}
               </ul>
             </div>
             <a className="font-bold text-xl md:text-4xl">
@@ -69,49 +75,49 @@ const Navbar = () => {
               >
                 Event
               </NavLink>
-              {/* {user && ( */}
-              <div>
-                <NavLink
-                  to={"/add-event"}
-                  className="px-4 py-2 font-semibold text-lg"
-                >
-                  Add Event
-                </NavLink>
-                <NavLink
-                  to={"/my-event"}
-                  className="px-4 py-2 font-semibold text-lg"
-                >
-                  My Event
-                </NavLink>
-              </div>
-              {/* )} */}
+              {user && (
+                <div>
+                  <NavLink
+                    to={"/add-event"}
+                    className="px-4 py-2 font-semibold text-lg"
+                  >
+                    Add Event
+                  </NavLink>
+                  <NavLink
+                    to={"/my-event"}
+                    className="px-4 py-2 font-semibold text-lg"
+                  >
+                    My Event
+                  </NavLink>
+                </div>
+              )}
             </ul>
           </div>
 
           <div className="navbar-end">
-            {/* {user ? ( */}
-            <div className="flex gap-1 items-center">
-              <div
-                className="tooltip tooltip-bottom"
-                // data-tip={user.displayName}
-              >
-                <img
-                  //   src={}
-                  className="w-12 h-12 rounded-full border-yellow-400 border-2"
-                  alt="User profile"
-                />
+            {user ? (
+              <div className="flex gap-1 items-center">
+                <div className="tooltip tooltip-bottom" data-tip={user.name}>
+                  <img
+                    src={user.photoURL}
+                    className="w-12 h-12 rounded-full border-yellow-400 border-2"
+                    alt="User profile"
+                  />
+                </div>
+                <button>
+                  <Link
+                    onClick={logOut}
+                    className="btn btn-grad pt-4 px-7 font-bold"
+                  >
+                    Log out
+                  </Link>
+                </button>
               </div>
-              <button>
-                <Link className="btn btn-grad pt-4 px-7 font-bold">
-                  Log out
-                </Link>
-              </button>
-            </div>
-            {/* ) : ( */}
-            <Link to={"/login"} className="btn btn-grad font-bold pt-4 px-7">
-              Login
-            </Link>
-            {/* )} */}
+            ) : (
+              <Link to={"/login"} className="btn btn-grad font-bold pt-4 px-7">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

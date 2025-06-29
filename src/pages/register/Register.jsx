@@ -1,104 +1,50 @@
 import React, { useContext, useState } from "react";
-// import { FaGoogle } from "react-icons/fa";
 // import "react-toastify/dist/ReactToastify.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../Authprovider/AuthProvider";
 // import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa6";
 import { IoMdEyeOff } from "react-icons/io";
+import { refresh } from "aos";
 
 const Registration = () => {
-  //   const { creatUser, google, setUser, updateUser } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(true);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const name = form.get("name");
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    // const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
-    // if (!passwordRegex.test(password)) {
-    //   toast.error(
-    //     " Must include an uppercase letter, a lowercase letter, and be at least 6 characters long",
-    //     {
-    //       position: "top-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //     }
-    //   );
-    //   return;
-    // }
-    // creatUser(email, password)
-    //   .then((res) => {
-    //     toast.success("Registration Successfull", {
-    //       position: "top-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //     });
-    //     setUser(res.user);
-    //     updateUser(name, photo)
-    //       .then((res) => {
-    //         navigate(location.state ? location.state : "/");
-    //       })
-    //       .catch((error) => {});
-    //   })
-    //   .catch((err) => {
-    //     toast.error(`${err.code}`, {
-    //       position: "top-right",
-    //       autoClose: 3000,
-    //       hideProgressBar: true,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "light",
-    //     });
-    //   });
-  };
+    const formData = { name, email, password, photo };
+    try {
+      const res = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-  //   const googleHandler = () => {
-  //     google()
-  //       .then((res) => {
-  //         toast.success("Google Sing In Success", {
-  //           position: "top-right",
-  //           autoClose: 3000,
-  //           hideProgressBar: true,
-  //           closeOnClick: true,
-  //           pauseOnHover: true,
-  //           draggable: true,
-  //           progress: undefined,
-  //           theme: "light",
-  //         });
-  //         navigate(location.state ? location.state : "/");
-  //       })
-  //       .catch((err) => {
-  //         toast.error("Registration Failed", {
-  //           position: "top-right",
-  //           autoClose: 3000,
-  //           hideProgressBar: true,
-  //           closeOnClick: true,
-  //           pauseOnHover: true,
-  //           draggable: true,
-  //           progress: undefined,
-  //           theme: "light",
-  //         });
-  //       });
-  //   };
+      const data = await res.json();
+      console.log("data", data, res);
+      if (res.ok) {
+        alert("✅ " + data.message);
+        localStorage.setItem("user", JSON.stringify(formData));
+
+        navigate("/");
+      } else {
+        alert("❌ " + data.message);
+      }
+    } catch (err) {
+      console.error("Registration error:", err);
+      alert("❌ Something went wrong. Try again.");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center my-16 px-4">
