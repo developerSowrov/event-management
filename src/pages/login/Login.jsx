@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(true);
   const emailRef = useRef();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setLoading } = useContext(AuthContext);
   const loginHandler = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -28,9 +28,9 @@ const Login = () => {
       const data = await res.json();
 
       if (res.ok) {
+        setUser(data.user);
         localStorage.setItem("user", JSON.stringify(data.user));
         alert("✅ " + data.message);
-        setUser(data.user);
 
         // 🟢 Redirect
         navigate("/");

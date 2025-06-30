@@ -11,7 +11,7 @@ const Registration = () => {
   const [showPass, setShowPass] = useState(true);
 
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setLoading } = useContext(AuthContext);
   const handleSignUp = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);

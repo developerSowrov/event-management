@@ -4,6 +4,10 @@ import Layout from "../layout/Layout";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/login";
 import Registration from "../pages/register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Event from "../pages/event/Event";
+import AddEvent from "../pages/add-event/AddEvent";
+import MyEvent from "../pages/my-event/MyEvent";
 
 export const router = createBrowserRouter([
   {
@@ -16,15 +20,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/event",
-        element: <div>Event page</div>,
+        element: (
+          <PrivateRoute>
+            <Event></Event>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-event",
-        element: <div>Add Event page</div>,
+        element: (
+          <PrivateRoute>
+            <AddEvent></AddEvent>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-event",
-        element: <div>My Event page</div>,
+        element: (
+          <PrivateRoute>
+            <MyEvent></MyEvent>
+          </PrivateRoute>
+        ),
       },
     ],
   },
