@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/event",
+        path: "/events",
         element: (
           <PrivateRoute>
             <Event></Event>

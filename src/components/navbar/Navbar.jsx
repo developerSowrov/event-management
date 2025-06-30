@@ -45,7 +45,7 @@ const Navbar = () => {
 
                 {user && (
                   <div className="flex flex-col">
-                    <NavLink to={"/event"} className={"p-2 rounded-lg "}>
+                    <NavLink to={"/events"} className={"p-2 rounded-lg "}>
                       Event
                     </NavLink>
                     <NavLink to={"/add-event"} className={"p-2 rounded-lg "}>
@@ -72,14 +72,15 @@ const Navbar = () => {
               >
                 HOME
               </NavLink>
-              <NavLink
-                to={"/event"}
-                className="px-4 py-2 font-semibold text-lg"
-              >
-                Event
-              </NavLink>
+
               {user && (
                 <div>
+                  <NavLink
+                    to={"/events"}
+                    className="px-4 py-2 font-semibold text-lg"
+                  >
+                    Event
+                  </NavLink>
                   <NavLink
                     to={"/add-event"}
                     className="px-4 py-2 font-semibold text-lg"
