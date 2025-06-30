@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-const user = JSON.parse(localStorage.getItem("user"));
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const logOut = () => {
-  localStorage.removeItem("user");
-};
 const Navbar = () => {
+  const { logOut, user, setUser } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut();
+    setUser(null);
+  };
+  console.log(user);
   return (
     <div className="pb-3">
       <div className="p-0">
@@ -106,7 +109,7 @@ const Navbar = () => {
                 </div>
                 <button>
                   <Link
-                    onClick={logOut}
+                    onClick={handleLogOut}
                     className="btn btn-grad pt-4 px-7 font-bold"
                   >
                     Log out

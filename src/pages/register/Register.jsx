@@ -5,22 +5,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa6";
 import { IoMdEyeOff } from "react-icons/io";
-import { refresh } from "aos";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Registration = () => {
   const [showPass, setShowPass] = useState(true);
 
   const navigate = useNavigate();
-  const location = useLocation();
-
+  const { setUser } = useContext(AuthContext);
   const handleSignUp = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const name = form.get("name");
-    const photo = form.get("photo");
+    const photoURL = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    const formData = { name, email, password, photo };
+    const formData = { name, email, password, photoURL };
     try {
       const res = await fetch("http://localhost:5000/register", {
         method: "POST",
@@ -33,9 +32,9 @@ const Registration = () => {
       const data = await res.json();
       console.log("data", data, res);
       if (res.ok) {
-        alert("✅ " + data.message);
+        setUser(formData);
         localStorage.setItem("user", JSON.stringify(formData));
-
+        alert("✅ " + data.message);
         navigate("/");
       } else {
         alert("❌ " + data.message);
@@ -77,7 +76,7 @@ const Registration = () => {
             </label>
             <input
               name="photo"
-              type="text"
+              type="url"
               placeholder="Enter photo URL"
               className="w-full px-4 py-2 bg-white text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
               required
@@ -129,10 +128,7 @@ const Registration = () => {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2 rounded-md transition duration-300"
-          >
+          <button type="submit" className="btn btn-grad w-full rounded-sm">
             Register
           </button>
         </form>

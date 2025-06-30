@@ -1,39 +1,39 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaGoogle } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(true);
   const emailRef = useRef();
-
+  const { setUser } = useContext(AuthContext);
   const loginHandler = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
-
+    const formData = { email, password };
     try {
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        alert("✅ " + data.message);
-
-        // 🟡 Save user in localStorage
         localStorage.setItem("user", JSON.stringify(data.user));
+        alert("✅ " + data.message);
+        setUser(data.user);
 
         // 🟢 Redirect
-        navigate(location?.state?.from || "/");
+        navigate("/");
       } else {
         alert("❌ " + data.message);
       }
