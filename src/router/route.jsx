@@ -5,9 +5,9 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/login";
 import Registration from "../pages/register/Register";
 import PrivateRoute from "./PrivateRoute";
-import Event from "../pages/event/Event";
 import AddEvent from "../pages/add-event/AddEvent";
 import MyEvent from "../pages/my-event/MyEvent";
+import Event from "../pages/events/Events";
 
 export const router = createBrowserRouter([
   {

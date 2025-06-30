@@ -46,7 +46,7 @@ const Navbar = () => {
                 {user && (
                   <div className="flex flex-col">
                     <NavLink to={"/events"} className={"p-2 rounded-lg "}>
-                      Event
+                      Events
                     </NavLink>
                     <NavLink to={"/add-event"} className={"p-2 rounded-lg "}>
                       Add event{" "}
@@ -65,7 +65,7 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 flex items-center gap-4">
+            <ul className="menu menu-horizontal px-1 flex items-center ">
               <NavLink
                 to={"/"}
                 className="rotate-90 px-4 py-2 font-bold tracking-wider"
@@ -79,7 +79,7 @@ const Navbar = () => {
                     to={"/events"}
                     className="px-4 py-2 font-semibold text-lg"
                   >
-                    Event
+                    Events
                   </NavLink>
                   <NavLink
                     to={"/add-event"}
@@ -111,14 +111,14 @@ const Navbar = () => {
                 <button>
                   <Link
                     onClick={handleLogOut}
-                    className="btn btn-grad pt-4 px-7 font-bold"
+                    className="btn btn-grad pt-2 px-7 font-bold"
                   >
                     Log out
                   </Link>
                 </button>
               </div>
             ) : (
-              <Link to={"/login"} className="btn btn-grad font-bold pt-4 px-7">
+              <Link to={"/login"} className="btn btn-grad font-bold pt-2 px-7">
                 Login
               </Link>
             )}

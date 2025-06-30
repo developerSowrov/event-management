@@ -17,7 +17,7 @@ const Content = () => {
           <div className="max-w-sm mx-auto bg-white text-gray-800 rounded-lg shadow-lg border-2 border-yellow-400 overflow-hidden">
             <img
               className="w-full h-48 object-cover"
-              src="https://example.com/image.jpg" // ✅ put your own image link here
+              src="https://example.com/image.jpg"
               alt="Career Counseling"
             />
             <div className="p-6">
