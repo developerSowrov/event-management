@@ -44,11 +44,11 @@ const MyEvent = () => {
                 toast.error("Something went wrong while deleting.");
               }
             }}
-            className="btn btn-sm btn-danger"
+            className="btn bg-red-500 text-white"
           >
             Yes
           </button>
-          <button onClick={closeToast} className="btn btn-sm btn-secondary">
+          <button onClick={closeToast} className="btn bg-white">
             No
           </button>
         </div>
