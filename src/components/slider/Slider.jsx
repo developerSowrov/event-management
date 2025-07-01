@@ -5,7 +5,7 @@ import skill from "../../assets/skill.jpg";
 const Slider = () => {
   return (
     <div>
-      <div className="carousel w-full mt-20">
+      <div className="carousel w-full">
         <div className="carousel-item w-full">
           <div
             className="hero min-h-screen"

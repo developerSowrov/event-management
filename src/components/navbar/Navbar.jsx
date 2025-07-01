@@ -52,7 +52,7 @@ const Navbar = () => {
                       Add event{" "}
                     </NavLink>
 
-                    <NavLink to={"/my-event"} className={"p-2 rounded-lg "}>
+                    <NavLink to={"/my-events"} className={"p-2 rounded-lg "}>
                       My Event
                     </NavLink>
                   </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
                     Add Event
                   </NavLink>
                   <NavLink
-                    to={"/my-event"}
+                    to={"/my-events"}
                     className="px-4 py-2 font-semibold text-lg"
                   >
                     My Event

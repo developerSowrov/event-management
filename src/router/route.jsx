@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddEvent from "../pages/add-event/AddEvent";
 import MyEvent from "../pages/my-event/MyEvent";
 import Event from "../pages/events/Events";
+import UpdateEvent from "../pages/updateEvent/UpdateEvent";
 
 export const router = createBrowserRouter([
   {
@@ -35,10 +36,18 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-event",
+        path: "/my-events",
         element: (
           <PrivateRoute>
             <MyEvent></MyEvent>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/event-update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateEvent></UpdateEvent>
           </PrivateRoute>
         ),
       },

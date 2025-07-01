@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const Event = () => {
   const [events, setEvents] = useState([]);
@@ -13,6 +12,44 @@ const Event = () => {
         setEvents(results);
       });
   }, []);
+
+  const handleJoin = async (eventId) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user?.email) {
+      alert("Please log in to join the event.");
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/events/${eventId}/join`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Failed to join.");
+        return;
+      }
+
+      alert("Joined successfully!");
+
+      // Refresh events
+      const updatedRes = await fetch(`${import.meta.env.VITE_BASE_URL}/events`);
+      const updatedEvents = await updatedRes.json();
+      setEvents(updatedEvents);
+    } catch (err) {
+      console.error("Join Error:", err);
+      alert("Something went wrong.");
+    }
+  };
 
   const startOfDay = (date) =>
     new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -193,13 +230,16 @@ const Event = () => {
                   </p>
 
                   {/* Join Button */}
-                  <div className="flex justify-center">
-                    <Link
-                      to={`/event-details/${event._id}`}
-                      className="w-full btn bg-yellow-400 text-white font-bold btn-grad rounded-lg pt-2 text-center"
+                  <div
+                    onClick={() => handleJoin(event._id)}
+                    className="flex justify-center"
+                  >
+                    <button
+                      // to={`/event-details/${event._id}`}
+                      className="w-full btn bg-yellow-400 text-white font-bold btn-grad rounded-lg  text-center"
                     >
                       Join Event
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
