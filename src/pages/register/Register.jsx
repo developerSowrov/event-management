@@ -1,17 +1,16 @@
 import React, { useContext, useState } from "react";
-// import "react-toastify/dist/ReactToastify.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../Authprovider/AuthProvider";
-// import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { IoMdEyeOff } from "react-icons/io";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const [showPass, setShowPass] = useState(true);
-
   const navigate = useNavigate();
   const { setUser, setLoading } = useContext(AuthContext);
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -20,6 +19,7 @@ const Registration = () => {
     const email = form.get("email");
     const password = form.get("password");
     const formData = { name, email, password, photoURL };
+
     try {
       const res = await fetch("http://localhost:5000/register", {
         method: "POST",
@@ -30,18 +30,17 @@ const Registration = () => {
       });
 
       const data = await res.json();
-      console.log("data", data, res);
       if (res.ok) {
         setUser(formData);
         localStorage.setItem("user", JSON.stringify(formData));
-        alert("✅ " + data.message);
+        toast.success("✅ " + data.message);
         navigate("/");
       } else {
-        alert("❌ " + data.message);
+        toast.error("❌ " + data.message);
       }
     } catch (err) {
       console.error("Registration error:", err);
-      alert("❌ Something went wrong. Try again.");
+      toast.error("❌ Something went wrong. Try again.");
     }
   };
 
@@ -55,7 +54,6 @@ const Registration = () => {
         <hr className="border border-gray-600 mb-6" />
 
         <form onSubmit={handleSignUp} className="space-y-5">
-          {/* Name */}
           <div>
             <label className="block text-white font-medium mb-1">
               Your Name
@@ -69,7 +67,6 @@ const Registration = () => {
             />
           </div>
 
-          {/* Photo URL */}
           <div>
             <label className="block text-white font-medium mb-1">
               Photo URL
@@ -83,7 +80,6 @@ const Registration = () => {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-white font-medium mb-1">Email</label>
             <input
@@ -95,7 +91,6 @@ const Registration = () => {
             />
           </div>
 
-          {/* Password */}
           <div className="relative">
             <label className="block text-white font-medium mb-1">
               Password
@@ -115,7 +110,6 @@ const Registration = () => {
             </div>
           </div>
 
-          {/* Terms & Conditions */}
           <div className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -127,13 +121,11 @@ const Registration = () => {
             </p>
           </div>
 
-          {/* Submit Button */}
           <button type="submit" className="btn btn-grad w-full rounded-sm">
             Register
           </button>
         </form>
 
-        {/* Already have account */}
         <p className="text-white text-center mt-6 text-sm sm:text-base">
           Already Have An Account?
           <Link to="/login" className="text-yellow-400 font-bold ml-1">

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaGoogle } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const location = useLocation();
@@ -10,12 +11,14 @@ const Login = () => {
   const [showPass, setShowPass] = useState(true);
   const emailRef = useRef();
   const { setUser, setLoading } = useContext(AuthContext);
+
   const loginHandler = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
     const formData = { email, password };
+
     try {
       const res = await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
         method: "POST",
@@ -30,16 +33,14 @@ const Login = () => {
       if (res.ok) {
         setUser(data.user);
         localStorage.setItem("user", JSON.stringify(data.user));
-        alert("✅ " + data.message);
-
-        // 🟢 Redirect
+        toast.success(data.message || "Login successful ✅");
         navigate("/");
       } else {
-        alert("❌ " + data.message);
+        toast.error(data.message || "Invalid credentials ❌");
       }
     } catch (err) {
       console.error("Login error:", err);
-      alert("❌ Something went wrong. Try again.");
+      toast.error("Something went wrong. Try again ❌");
     }
   };
 
@@ -86,7 +87,7 @@ const Login = () => {
           <div className="text-right -mt-4">
             <Link
               to="/forget"
-              className="text-sm text-gray-400  hover:text-yellow-400 font-medium"
+              className="text-sm text-gray-400 hover:text-yellow-400 font-medium"
             >
               Forgot password?
             </Link>

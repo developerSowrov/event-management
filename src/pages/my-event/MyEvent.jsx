@@ -1,40 +1,66 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MyEvent = () => {
   const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BASE_URL}/my-events/${user.email}`)
       .then((res) => res.json())
       .then((results) => {
         setEvents(results);
       });
-  }, []);
-  const handleDelete = async (id) => {
-    const confirmDelete = confirm(
-      "Are you sure you want to delete this event?"
+  }, [user.email]);
+
+  const handleDelete = (id) => {
+    const ToastContent = ({ closeToast }) => (
+      <div>
+        <p>Are you sure you want to delete this event?</p>
+        <div className="mt-2 flex justify-end gap-2">
+          <button
+            onClick={async () => {
+              closeToast();
+              try {
+                const res = await fetch(
+                  `${import.meta.env.VITE_BASE_URL}/event/${id}`,
+                  {
+                    method: "DELETE",
+                  }
+                );
+
+                const data = await res.json();
+
+                if (res.ok) {
+                  toast.success("Event deleted successfully!");
+                  setEvents((prev) => prev.filter((event) => event._id !== id));
+                } else {
+                  toast.error(data.message || "Failed to delete event.");
+                }
+              } catch (error) {
+                console.error("Delete Error:", error);
+                toast.error("Something went wrong while deleting.");
+              }
+            }}
+            className="btn btn-sm btn-danger"
+          >
+            Yes
+          </button>
+          <button onClick={closeToast} className="btn btn-sm btn-secondary">
+            No
+          </button>
+        </div>
+      </div>
     );
-    if (!confirmDelete) return;
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/event/${id}`, {
-        method: "DELETE",
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert("Event deleted successfully!");
-        setEvents((prev) => prev.filter((event) => event._id !== id));
-      } else {
-        alert(data.message || "Failed to delete event.");
-      }
-    } catch (error) {
-      console.error("Delete Error:", error);
-      alert("Something went wrong while deleting.");
-    }
+    toast.info(<ToastContent />, {
+      autoClose: false,
+      closeOnClick: false,
+      closeButton: false,
+      draggable: false,
+    });
   };
 
   return (
@@ -51,18 +77,13 @@ const MyEvent = () => {
           >
             <div className="max-w-sm mx-auto bg-white text-gray-800 rounded-lg shadow-lg border-2 border-yellow-400 overflow-hidden">
               <div className="p-6">
-                {/* Title */}
                 <h2 className="text-2xl font-bold mb-1">{event.title}</h2>
-
-                {/* Posted By */}
                 <p className="text-sm text-gray-600 mb-2">
                   Posted By:{" "}
                   <span className="font-semibold text-gray-800">
                     {event.name}
                   </span>
                 </p>
-
-                {/* Date & Location */}
                 <div className="text-sm text-gray-600 mb-2">
                   <p>
                     <span className="font-bold">Date:</span>{" "}
@@ -80,29 +101,20 @@ const MyEvent = () => {
                     {event.location}
                   </p>
                 </div>
-
-                {/* Description */}
                 <p className="text-sm text-gray-700 mb-4 line-clamp-3">
                   {event.description}
                 </p>
-
-                {/* Attendee Count */}
                 <p className="text-sm text-gray-600 mb-4">
                   <span className="font-medium">Attendees:</span>{" "}
                   {event.attendeeCount}
                 </p>
-
-                {/* Action Buttons */}
                 <div className="flex gap-4 justify-between mt-4">
-                  {/* Update Button */}
                   <Link
                     to={`/event-update/${event._id}`}
                     className="w-1/2 btn bg-blue-500 text-white font-bold rounded-lg "
                   >
                     Update
                   </Link>
-
-                  {/* Delete Button */}
                   <button
                     onClick={() => handleDelete(event._id)}
                     className="w-1/2 btn bg-red-500 text-white font-bold rounded-lg "

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddEvent = () => {
   const { user } = useContext(AuthContext);
@@ -28,13 +30,13 @@ const AddEvent = () => {
       });
 
       if (res.ok) {
-        alert("Event added successfully!");
+        toast.success("Event added successfully!");
         navigate("/events");
       } else {
-        alert("Failed to add event");
+        toast.error("Failed to add event");
       }
     } catch (err) {
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
       console.error(err);
     }
   };
@@ -50,7 +52,6 @@ const AddEvent = () => {
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {/* Event Title */}
           <div>
             <label className="block text-white font-semibold mb-1">
               Event Title
@@ -64,7 +65,6 @@ const AddEvent = () => {
             />
           </div>
 
-          {/* Location */}
           <div>
             <label className="block text-white font-semibold mb-1">
               Location
@@ -78,7 +78,6 @@ const AddEvent = () => {
             />
           </div>
 
-          {/* Posted By */}
           <div>
             <label className="block text-white font-semibold mb-1">
               Posted By
@@ -93,7 +92,6 @@ const AddEvent = () => {
             />
           </div>
 
-          {/* Date & Time */}
           <div>
             <label className="block text-white font-semibold mb-1">
               Date & Time
@@ -106,7 +104,6 @@ const AddEvent = () => {
             />
           </div>
 
-          {/* Attendee Count */}
           <div className="md:col-span-2">
             <label className="block text-white font-semibold mb-1">
               Attendee Count
@@ -120,7 +117,6 @@ const AddEvent = () => {
             />
           </div>
 
-          {/* Description (span 2 columns) */}
           <div className="md:col-span-2">
             <label className="block text-white font-semibold mb-1">
               Description
@@ -134,7 +130,6 @@ const AddEvent = () => {
             ></textarea>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="btn md:col-span-2 btn-grad w-full rounded-sm"

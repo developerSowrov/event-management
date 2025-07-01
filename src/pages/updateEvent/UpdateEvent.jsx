@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateEvent = () => {
   const { id } = useParams();
   const [event, setEvent] = useState({});
   const navigate = useNavigate();
 
-  // Fetch existing event by ID
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BASE_URL}/event/${id}`)
       .then((res) => res.json())
@@ -39,8 +40,11 @@ const UpdateEvent = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("Event updated successfully!");
-        navigate("/my-events"); // redirect back
+        toast.success("Event updated successfully!");
+        navigate("/my-events");
+      })
+      .catch(() => {
+        toast.error("Failed to update event.");
       });
   };
 
@@ -57,7 +61,6 @@ const UpdateEvent = () => {
         onSubmit={handleUpdate}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        {/* Event Title */}
         <div>
           <label className="block text-white font-semibold mb-1">
             Event Title
@@ -72,7 +75,6 @@ const UpdateEvent = () => {
           />
         </div>
 
-        {/* Location */}
         <div>
           <label className="block text-white font-semibold mb-1">
             Location
@@ -87,7 +89,6 @@ const UpdateEvent = () => {
           />
         </div>
 
-        {/* Email (readonly) */}
         <div>
           <label className="block text-white font-semibold mb-1">Email</label>
           <input
@@ -100,7 +101,6 @@ const UpdateEvent = () => {
           />
         </div>
 
-        {/* Date & Time */}
         <div>
           <label className="block text-white font-semibold mb-1">
             Date & Time
@@ -115,7 +115,6 @@ const UpdateEvent = () => {
           />
         </div>
 
-        {/* Attendee Count */}
         <div className="md:col-span-2">
           <label className="block text-white font-semibold mb-1">
             Attendee Count
@@ -130,7 +129,6 @@ const UpdateEvent = () => {
           />
         </div>
 
-        {/* Description */}
         <div className="md:col-span-2">
           <label className="block text-white font-semibold mb-1">
             Description
@@ -145,7 +143,6 @@ const UpdateEvent = () => {
           ></textarea>
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="btn md:col-span-2 btn-grad w-full rounded-sm"
