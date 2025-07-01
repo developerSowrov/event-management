@@ -4,87 +4,91 @@ import { FaCircleDot } from "react-icons/fa6";
 
 const Meet = () => {
   return (
-    <div className="container -mt-5  mb-20 mx-auto px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="container -mt-5 mb-20 mx-auto px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div className="relative">
-        <img src={meet} alt="Counseling" className="rounded-lg shadow-lg" />
+        <img
+          src={meet}
+          alt="Event Management"
+          className="rounded-lg shadow-lg"
+        />
         <div className="absolute -bottom-12 -right-8 bg-black text-white p-4 rounded-lg shadow-lg">
-          <h4 className="text-lg font-semibold">Get in touch</h4>
+          <h4 className="text-lg font-semibold">Get in Touch</h4>
           <p className="mt-2 text-sm">
-            <span className="block">Client Support:</span>
-            <span className="font-bold">(888) 4000-2345</span>
+            <span className="block">Customer Support:</span>
+            <span className="font-bold">(888) 1234-5678</span>
           </p>
           <p className="mt-2 text-sm">
             <span className="block">Email Support:</span>
-            <span className="font-bold">path@finder.org</span>
+            <span className="font-bold">support@eventora.com</span>
           </p>
         </div>
       </div>
 
       <div className="space-y-6">
         <h2 className="text-2xl lg:text-3xl font-bold leading-tight text-gray-800">
-          Embrace your best self and elevate your life with Sowrov.
+          Make Your Events Unforgettable with Gatherly
         </h2>
         <p className="text-gray-600">
-          Discover personalized coaching, expert guidance, and transformative
-          support to unlock your potential and achieve a fulfilling, elevated
-          life with Sowrov.
+          From corporate conferences to personal celebrations — we provide
+          end-to-end event management solutions tailored to your needs. Let us
+          turn your vision into reality with creativity, precision, and passion.
         </p>
         <div className="grid grid-cols-2 gap-4">
           <ul className="space-y-2">
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
+                <FaCircleDot />
               </span>
-              <span>Expert Coaches</span>
+              <span>Experienced Planners</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Personalized Coaching Plans</span>
+                <FaCircleDot />
+              </span>
+              <span>Customized Event Solutions</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Holistic Approach to Growth</span>
+                <FaCircleDot />
+              </span>
+              <span>Creative Theme Designs</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Proven Track Record</span>
+                <FaCircleDot />
+              </span>
+              <span>Reliable Vendor Network</span>
             </li>
           </ul>
           <ul className="space-y-2">
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Flexible & Convenient</span>
+                <FaCircleDot />
+              </span>
+              <span>On-time Execution</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Supportive & Encouraging</span>
+                <FaCircleDot />
+              </span>
+              <span>Client-Centered Service</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Continuous Accountability</span>
+                <FaCircleDot />
+              </span>
+              <span>Budget-Friendly Packages</span>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-yellow-500">
-                <FaCircleDot></FaCircleDot>
-              </span>{" "}
-              <span>Comprehensive Resources</span>
+                <FaCircleDot />
+              </span>
+              <span>24/7 Event Support</span>
             </li>
           </ul>
         </div>
         <button className="px-6 py-3 bg-yellow-400 btn-grad text-white font-semibold rounded-lg shadow-lg hover:bg-yellow-500 transition duration-300">
-          Discover More
+          Plan Your Event
         </button>
       </div>
     </div>

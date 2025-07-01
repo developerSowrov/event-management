@@ -4,13 +4,13 @@ const Service = () => {
   return (
     <div>
       <p className="text-5xl font-bold text-center mt-16">
-        We Help Make Your <span className="t ">DREAMS</span> Reality.
+        Making Your <span className="t">Events</span> Truly Memorable.
       </p>
-      <p className=" text-lg text-center text-gray-600 mt-3 w-10/12 mx-auto">
-        We empower individuals to achieve their dreams through expert guidance,
-        personalized support, and practical tools. Together, we transform
-        aspirations into achievements, turning your vision into a reality you’ve
-        always desired.
+      <p className="text-lg text-center text-gray-600 mt-3 w-10/12 mx-auto">
+        From planning to execution, we bring your event ideas to life with
+        creativity, precision, and passion. Whether it's a corporate gathering
+        or a personal celebration — we make every moment seamless, stunning, and
+        truly memorable.
       </p>
     </div>
   );

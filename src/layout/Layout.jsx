@@ -6,7 +6,7 @@ import Footer from "../components/footer/Footer";
 const Layout = () => {
   return (
     <div>
-      <div className="w-full bg-[#0b1629] text-white ">
+      <div className="w-full bg-[#0b1629] text-white fixed z-10">
         <div className="max-w-[1150px] mx-auto">
           <Navbar></Navbar>
         </div>

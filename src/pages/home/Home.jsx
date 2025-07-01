@@ -6,6 +6,11 @@ import AOS from "aos";
 import Meet from "../../components/Meet/Meet";
 import Service from "../../components/Service/Service";
 import Content from "../../components/content/Content";
+import Slider from "../../components/slider/Slider";
+import EventSet from "../../components/event-set/EventSet";
+import RecentEvent from "../../components/recentEvent/RecentEvent";
+import ClientsReview from "../../components/clientsReview/ClientsReview";
+import BlogSection from "../../components/blog/BlogSection";
 
 const Home = () => {
   const data = useLoaderData();
@@ -15,10 +20,14 @@ const Home = () => {
   }, [data]);
   return (
     <div>
-      {/* <Slider></Slider> */}
+      <Slider></Slider>
       <div className="w-[1150px] mx-auto">
         <Service></Service>
         <Meet></Meet>
+        <RecentEvent></RecentEvent>
+        <EventSet></EventSet>
+        <ClientsReview></ClientsReview>
+        <BlogSection></BlogSection>
         <Content></Content>
       </div>
     </div>
