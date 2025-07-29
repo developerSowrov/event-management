@@ -5,10 +5,16 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/login";
 import Registration from "../pages/register/Register";
 import PrivateRoute from "./PrivateRoute";
-import AddEvent from "../pages/add-event/AddEvent";
-import MyEvent from "../pages/my-event/MyEvent";
-import Event from "../pages/events/Events";
-import UpdateEvent from "../pages/updateEvent/UpdateEvent";
+import AddEvent from "../pages/add-product/AddProducts";
+import MyEvent from "../pages/my-products/MyProducts";
+import Event from "../pages/products/Products";
+import UpdateEvent from "../pages/updateEvent/UpdateProduct";
+import AddProducts from "../pages/add-product/AddProducts";
+import Products from "../pages/products/Products";
+import ProductDetails from "../pages/product-details/ProductDetails";
+import MyProducts from "../pages/my-products/MyProducts";
+import UpdateProduct from "../pages/updateEvent/UpdateProduct";
+import CartPage from "../pages/cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -20,37 +26,53 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/events",
+        path: "/products",
         element: (
           <PrivateRoute>
-            <Event></Event>
+            <Products></Products>
           </PrivateRoute>
         ),
       },
       {
-        path: "/add-event",
+        path: "/add-product",
         element: (
           <PrivateRoute>
-            <AddEvent></AddEvent>
+            <AddProducts></AddProducts>
           </PrivateRoute>
         ),
       },
       {
-        path: "/my-events",
+        path: "/my-products",
         element: (
           <PrivateRoute>
-            <MyEvent></MyEvent>
+            <MyProducts></MyProducts>
           </PrivateRoute>
         ),
       },
       {
-        path: "/event-update/:id",
+        path: "/product-update/:id",
         element: (
           <PrivateRoute>
-            <UpdateEvent></UpdateEvent>
+            <UpdateProduct></UpdateProduct>
           </PrivateRoute>
         ),
       },
+      {
+  path: "/product/:id",
+  element: (
+    <PrivateRoute>
+      <ProductDetails />
+    </PrivateRoute>
+  ),
+},
+      {
+  path: "/cart",
+  element: (
+    <PrivateRoute>
+      <CartPage></CartPage>
+    </PrivateRoute>
+  ),
+},
     ],
   },
   {

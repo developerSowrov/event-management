@@ -1,144 +1,127 @@
 import React from "react";
+
 const filteredEvents = [
   {
-    _id: "1",
-    title: "Annual Tech Conference 2025",
-    name: "Sowrov Hossain",
-    datetime: "2025-08-10T10:00:00",
-    location: "Dhaka Convention Center",
-    description:
-      "Join industry leaders and tech enthusiasts for a day of innovation, networking, and insights into the future of technology.",
-    attendeeCount: 120,
+    id: "101",
+    name: "Fresh Tomatoes",
+    price: 2.5,
+    description: "Juicy, ripe tomatoes straight from local farms.",
+    category: "Vegetables",
+    img: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=80"
   },
   {
-    _id: "2",
-    title: "Food & Fun Festival",
-    name: "Tania Rahman",
-    datetime: "2025-07-15T15:00:00",
-    location: "Gulshan Lake Park",
-    description:
-      "A vibrant outdoor festival filled with food stalls, live music, games, and family-friendly entertainment.",
-    attendeeCount: 350,
+    id: "102",
+    name: "Organic Milk",
+    price: 1.8,
+    description: "Full cream organic milk from trusted farms.",
+    category: "Dairy",
+    img: "https://images.unsplash.com/photo-1587049352833-cd46fc684d6f?auto=format&fit=crop&w=600&q=80"
   },
   {
-    _id: "3",
-    title: "Startup Pitch Night",
-    name: "Arif Mahmud",
-    datetime: "2025-07-25T18:30:00",
-    location: "Innovation Hub, Banani",
-    description:
-      "Watch aspiring entrepreneurs pitch their groundbreaking ideas to a panel of investors and mentors.",
-    attendeeCount: 80,
+    id: "103",
+    name: "Basmati Rice 5kg",
+    price: 12.0,
+    description: "Premium quality long grain basmati rice.",
+    category: "Grains",
+    img: "https://images.unsplash.com/photo-1582464667577-9e6f6f4f28b0?auto=format&fit=crop&w=600&q=80"
   },
   {
-    _id: "4",
-    title: "Photography Masterclass",
-    name: "Nadia Akter",
-    datetime: "2025-07-18T14:00:00",
-    location: "Studio LensArt, Dhanmondi",
-    description:
-      "Learn professional techniques from expert photographers in this hands-on creative workshop.",
-    attendeeCount: 40,
+    id: "104",
+    name: "Brown Eggs - 12 Pack",
+    price: 2.9,
+    description: "Farm fresh brown eggs packed with protein.",
+    category: "Dairy & Eggs",
+    img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80"
   },
   {
-    _id: "5",
-    title: "Open Air Movie Night",
-    name: "Farhan Islam",
-    datetime: "2025-07-22T19:00:00",
-    location: "Central Playground, Uttara",
-    description:
-      "Enjoy a cozy movie night under the stars with popcorn, blankets,launch,dinner and your favorite films.",
-    attendeeCount: 200,
+    id: "105",
+    name: "Sunflower Oil 1L",
+    price: 3.5,
+    description: "Healthy and light cooking oil for everyday use.",
+    category: "Cooking Essentials",
+    img: "https://images.unsplash.com/photo-1563306406-c08d77f45f3e?auto=format&fit=crop&w=600&q=80"
   },
   {
-    _id: "6",
-    title: "Corporate Leadership Summit",
-    name: "Shamim Reza",
-    datetime: "2025-08-01T09:00:00",
-    location: "Hotel Intercontinental, Dhaka",
-    description:
-      "An exclusive summit for business leaders to explore strategic growth, innovation, and networking opportunities.",
-    attendeeCount: 95,
+    id: "106",
+    name: "Red Onions 1kg",
+    price: 1.1,
+    description: "Fresh red onions with strong flavor and aroma.",
+    category: "Vegetables",
+    img: "https://images.unsplash.com/photo-1606312616404-e90c67a4a3ee?auto=format&fit=crop&w=600&q=80"
   },
+  {
+    id: "107",
+    name: "Cucumbers 1kg",
+    price: 1.2,
+    description: "Cool and crunchy cucumbers, perfect for salads.",
+    category: "Vegetables",
+    img: "https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: "108",
+    name: "Potatoes 2kg",
+    price: 1.6,
+    description: "Versatile and fresh potatoes for all your meals.",
+    category: "Vegetables",
+    img: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: "109",
+    name: "Green Chili 250g",
+    price: 0.8,
+    description: "Spicy and fresh green chilies to spice up your dishes.",
+    category: "Vegetables",
+    img: "https://images.unsplash.com/photo-1590080877777-8ecb43a3e498?auto=format&fit=crop&w=600&q=80"
+  }
 ];
 
-const RecentEvent = () => {
+const RecentProducts = () => {
   return (
-    <div>
-      <div className=" pb-10 bg-gray-100 pt-10 rounded-2xl">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Heading */}
-          <div>
-            <p className="text-5xl font-bold text-center ">Up Coming Events</p>
-            <p className="text-lg text-center text-gray-600 mt-3 mb-10 w-10/12 mx-auto">
-              Explore our latest events and be a part of something special. From
-              corporate gatherings to community festivals — we host it all!
-            </p>
-          </div>
+    <div className="pb-10 bg-gray-100 pt-10 rounded-2xl">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div>
+          <p className="text-5xl font-bold text-center">Featured Grocery Items</p>
+          <p className="text-lg text-center text-gray-600 mt-3 mb-10 w-10/12 mx-auto">
+            Discover our freshest arrivals and best deals on daily essentials.
+          </p>
+        </div>
 
-          {/* Events Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
-              <div
-                key={event._id}
-                className="shadow-xl transition-transform transform hover:scale-105"
-              >
-                <div className="max-w-sm mx-auto bg-white text-gray-800 rounded-xl border-2 border-yellow-400 overflow-hidden">
-                  <div className="p-6">
-                    {/* Title */}
-                    <h2 className="text-xl font-bold mb-1">{event.title}</h2>
-
-                    {/* Posted By */}
-                    <p className="text-sm text-gray-600 mb-2">
-                      Posted by:{" "}
-                      <span className="font-semibold text-gray-800">
-                        {event.name}
-                      </span>
-                    </p>
-
-                    {/* Date & Location */}
-                    <div className="text-sm text-gray-600 mb-3 space-y-1">
-                      <p>
-                        <span className="font-bold">Date:</span>{" "}
-                        {new Date(event.datetime).toLocaleDateString()}
-                      </p>
-                      <p>
-                        <span className="font-bold">Time:</span>{" "}
-                        {new Date(event.datetime).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </p>
-                      <p>
-                        <span className="font-bold">Location:</span>{" "}
-                        {event.location}
-                      </p>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-sm text-gray-700 mb-4 line-clamp-3">
-                      {event.description}
-                    </p>
-
-                    {/* Attendee Count */}
-                    <p className="text-sm text-gray-600 mb-4">
-                      <span className="font-medium">Attendees:</span>{" "}
-                      {event.attendeeCount}
-                    </p>
-
-                    {/* Join Button */}
-                    <button className="btn btn-grad px-7 font-bold">
-                      Join Event
-                    </button>
-                  </div>
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredEvents.map((product) => (
+            <div
+              key={product.id}
+              className="shadow-xl transition-transform transform hover:scale-105"
+            >
+              <div className="max-w-sm mx-auto bg-white text-gray-800 rounded-xl border-2 border-yellow-400 overflow-hidden">
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  className="w-full h-52 object-cover"
+                />
+                <div className="p-6">
+                  <h2 className="text-xl font-bold mb-1">{product.name}</h2>
+                  <p className="text-lg font-semibold text-green-600 mb-2">
+                    ${product.price.toFixed(2)}
+                  </p>
+                  <p className="text-sm text-gray-500 mb-2">
+                    Category: <span className="font-medium">{product.category}</span>
+                  </p>
+                  <p className="text-sm text-gray-700 mb-4 line-clamp-3">
+                    {product.description}
+                  </p>
+                  <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default RecentEvent;
+export default RecentProducts;

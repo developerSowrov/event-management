@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { logOut, user, setUser } = useContext(AuthContext);
@@ -46,14 +47,14 @@ const Navbar = () => {
                 {user && (
                   <div className="flex flex-col">
                     <NavLink to={"/events"} className={"p-2 rounded-lg "}>
-                      Events
+                      Products
                     </NavLink>
                     <NavLink to={"/add-event"} className={"p-2 rounded-lg "}>
-                      Add event{" "}
+                      Add Product{" "}
                     </NavLink>
 
                     <NavLink to={"/my-events"} className={"p-2 rounded-lg "}>
-                      My Event
+                      My Products
                     </NavLink>
                   </div>
                 )}
@@ -76,22 +77,22 @@ const Navbar = () => {
               {user && (
                 <div>
                   <NavLink
-                    to={"/events"}
+                    to={"/products"}
                     className="px-4 py-2 font-semibold text-lg"
                   >
-                    Events
+                    Products
                   </NavLink>
                   <NavLink
-                    to={"/add-event"}
+                    to={"/add-product"}
                     className="px-4 py-2 font-semibold text-lg"
                   >
-                    Add Event
+                    Add Product
                   </NavLink>
                   <NavLink
-                    to={"/my-events"}
+                    to={"/my-products"}
                     className="px-4 py-2 font-semibold text-lg"
                   >
-                    My Event
+                    My Products
                   </NavLink>
                 </div>
               )}
@@ -101,6 +102,9 @@ const Navbar = () => {
           <div className="navbar-end">
             {user ? (
               <div className="flex gap-1 items-center">
+                <NavLink to="/cart" className="text-yellow-500 text-2xl mr-6">
+  <FaShoppingCart />
+</NavLink>
                 <div className="tooltip tooltip-bottom" data-tip={user.name}>
                   <img
                     src={user.photoURL}

@@ -8,9 +8,9 @@ import Service from "../../components/Service/Service";
 import Content from "../../components/content/Content";
 import Slider from "../../components/slider/Slider";
 import EventSet from "../../components/event-set/EventSet";
-import RecentEvent from "../../components/recentEvent/RecentEvent";
 import ClientsReview from "../../components/clientsReview/ClientsReview";
 import BlogSection from "../../components/blog/BlogSection";
+import RecentProducts from "../../components/recentEvent/RecentEvent";
 
 const Home = () => {
   const data = useLoaderData();
@@ -24,7 +24,7 @@ const Home = () => {
       <div className="w-[1150px] mx-auto">
         <Service></Service>
         <Meet></Meet>
-        <RecentEvent></RecentEvent>
+        <RecentProducts></RecentProducts>
         <EventSet></EventSet>
         <ClientsReview></ClientsReview>
         <BlogSection></BlogSection>
