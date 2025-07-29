@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
@@ -9,7 +9,16 @@ const Navbar = () => {
     logOut();
     setUser(null);
   };
-  console.log(user);
+    const [cartItems, setCartItems] = useState([]);
+  
+    useEffect(() => {
+      if (!user) return;
+      fetch(`${import.meta.env.VITE_BASE_URL}/cart/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => setCartItems(data))
+        .catch((err) => console.error("Failed to fetch cart items", err));
+    }, [user]);
+    const cartLength = cartItems.length
   return (
     <div className="pb-3">
       <div className="p-0">
@@ -102,9 +111,10 @@ const Navbar = () => {
           <div className="navbar-end">
             {user ? (
               <div className="flex gap-1 items-center">
-                <NavLink to="/cart" className="text-yellow-500 text-2xl mr-6">
-  <FaShoppingCart />
-</NavLink>
+                <NavLink to="/cart" className="text-yellow-500 text-2xl mr-6 relative">
+                 
+                 <p className="bg-red-500 rounded-full flex justify-center items-center text-center py-1 text-xs size-4 absolute left-4 bottom-3">{cartLength}</p> <FaShoppingCart/>
+                </NavLink>
                 <div className="tooltip tooltip-bottom" data-tip={user.name}>
                   <img
                     src={user.photoURL}
