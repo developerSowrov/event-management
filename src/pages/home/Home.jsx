@@ -11,6 +11,8 @@ import EventSet from "../../components/event-set/EventSet";
 import ClientsReview from "../../components/clientsReview/ClientsReview";
 import BlogSection from "../../components/blog/BlogSection";
 import RecentProducts from "../../components/recentEvent/RecentEvent";
+import GroceryShop from "../../components/event-set/EventSet";
+import GroceryBlogSection from "../../components/blog/BlogSection";
 
 const Home = () => {
   const data = useLoaderData();
@@ -25,9 +27,11 @@ const Home = () => {
         <Service></Service>
         <Meet></Meet>
         <RecentProducts></RecentProducts>
-        <EventSet></EventSet>
+        {/* <EventSet></EventSet> */}
+        <GroceryShop></GroceryShop>
         <ClientsReview></ClientsReview>
-        <BlogSection></BlogSection>
+        {/* <BlogSection></BlogSection> */}
+        <GroceryBlogSection></GroceryBlogSection>
         <Content></Content>
       </div>
     </div>

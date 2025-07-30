@@ -4,13 +4,12 @@ const Service = () => {
   return (
     <div>
       <p className="text-5xl font-bold text-center mt-16">
-        Making Your <span className="t">Events</span> Truly Memorable.
+        Freshness & Quality <span className="t">Delivered</span> to Your Doorstep.
       </p>
       <p className="text-lg text-center text-gray-600 mt-3 w-10/12 mx-auto">
-        From planning to execution, we bring your event ideas to life with
-        creativity, precision, and passion. Whether it's a corporate gathering
-        or a personal celebration — we make every moment seamless, stunning, and
-        truly memorable.
+        From farm to shelf, we bring you the finest groceries with care,
+        speed, and affordability. Whether you're stocking up your pantry or shopping
+        for daily essentials — enjoy a seamless and satisfying grocery experience every time.
       </p>
     </div>
   );

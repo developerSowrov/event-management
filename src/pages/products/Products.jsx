@@ -29,7 +29,7 @@ const Products = () => {
     }
   };
 
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = products?.filter((product) => {
     const nameMatch = product.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());

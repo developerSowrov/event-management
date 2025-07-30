@@ -4,25 +4,25 @@ const reviews = [
   {
     id: 1,
     name: "Tania Rahman",
-    role: "Event Organizer",
+    role: "Regular Customer",
     review:
-      "Sowrov's event management service made our conference a huge success! Professional and attentive to every detail.",
+      "Fresh items and fast delivery every time! I love shopping here — the vegetables always arrive crisp and clean.",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     id: 2,
     name: "Arif Mahmud",
-    role: "Startup Founder",
+    role: "Working Professional",
     review:
-      "The team was incredible in handling all our event needs smoothly. Highly recommended for corporate events.",
+      "Such a time-saver! The grocery selection is great, prices are fair, and I never have to wait long for my orders.",
     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
     id: 3,
     name: "Nadia Akter",
-    role: "Photographer",
+    role: "Home Chef",
     review:
-      "Very friendly and professional! Their planning and execution were flawless and the venues were perfect.",
+      "This shop is a blessing! Always get my cooking essentials on time. The rice, oil, and spices are top-notch quality.",
     avatar: "https://randomuser.me/api/portraits/women/24.jpg",
   },
 ];
@@ -32,7 +32,7 @@ const ClientsReview = () => {
     <section className="bg-gray-100 py-16 rounded-2xl">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
-          What Our Clients Say
+          What Our Customers Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map(({ id, name, role, review, avatar }) => (
