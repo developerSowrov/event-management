@@ -58,7 +58,7 @@ const Products = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
         {filteredProducts.length === 0 ? (
           <p className="text-center col-span-full text-gray-500">
             No products found.
@@ -67,13 +67,13 @@ const Products = () => {
           filteredProducts.map((product) => (
             <div
               key={product._id}
-              className="shadow-xl transition-transform transform hover:scale-105"
+              className=" w-full shadow-xl transition-transform transform hover:scale-105"
             >
-              <div className="max-w-sm mx-auto bg-white text-gray-800 rounded-lg shadow-lg border-2 border-yellow-400 overflow-hidden">
+              <div className=" mx-auto bg-white text-gray-800 rounded-lg shadow-lg border-2 border-yellow-400 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-60 object-cover"
                 />
                 <div className="p-6">
                   <h2 className="text-2xl font-bold mb-1">{product.name}</h2>
@@ -94,7 +94,7 @@ const Products = () => {
                     Available: {product.quantity}
                   </p>
 <Link to={`/product/${product._id}`}>
-  <button className="w-full btn bg-yellow-400 text-white font-bold rounded-lg text-center hover:bg-yellow-500">
+  <button className="w-full btn  btn-grad text-white font-bold rounded-lg text-center hover:bg-yellow-500">
     View Details
   </button>
 </Link>

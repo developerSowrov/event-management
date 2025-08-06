@@ -9,6 +9,7 @@ const ProductDetails = () => {
     const { user } = useContext(AuthContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  console.log(product)
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`)
@@ -26,7 +27,7 @@ const ProductDetails = () => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      product: product,
+      product,
       email: user.email,
     }),
   })
@@ -38,7 +39,7 @@ const ProductDetails = () => {
   if (!product) return <p className="text-center mt-10">Loading...</p>;
 
   return (
-    <div className="max-w-5xl mx-auto my-10 p-6 bg-white rounded shadow border">
+<div className="max-w-5xl mx-auto my-10 p-6 bg-white rounded-lg shadow border-2 border-yellow-400">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Image on Left */}
         <div className="w-full lg:w-1/2">

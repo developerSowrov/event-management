@@ -4,6 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const CartPage = () => {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
+  console.log(cartItems)
 
   useEffect(() => {
     if (!user) return;
@@ -18,28 +19,37 @@ const CartPage = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto my-10 p-6 bg-white rounded shadow border">
-      <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
+    <div className="max-w-6xl mx-auto my-10 p-6 bg-white rounded shadow border-2 border-yellow-400">
+      <h2 className="text-3xl font-bold mb-6 text-yellow-600">Your Cart</h2>
 
       {cartItems.length === 0 ? (
-        <p>No items in your cart.</p>
+        <p className="text-gray-500">No items in your cart.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {cartItems.map((item) => (
-            <div key={item._id} className="flex border rounded p-4 shadow-sm">
+            <div
+              key={item._id}
+              className="flex border-2 border-yellow-300 rounded-lg p-4 shadow hover:shadow-md transition duration-300"
+            >
               {/* Image */}
               <img
                 src={item.product?.image}
                 alt={item.product?.name}
-                className="w-28 h-28 object-cover rounded mr-4"
+                className="w-28 h-28 object-cover rounded mr-4 border border-yellow-200"
               />
 
               {/* Product Info */}
               <div className="flex-1">
-                <h3 className="text-xl font-semibold">{item.product?.name}</h3>
-                <p className="text-gray-600 mb-1">Price: ${item.product?.price}</p>
+                <h3 className="text-xl font-semibold text-gray-800">
+                  {item.product?.name}
+                </h3>
+                <p className="text-gray-600 mb-1">
+                  Price: <span className="text-yellow-600">${item.product?.price}</span>
+                </p>
                 <p className="text-gray-600 mb-1">Quantity: {item.quantity}</p>
-                <p className="text-sm text-gray-500">Seller: {item.product?.seller}</p>
+                <p className="text-sm text-gray-500">
+                  Seller: {item.product?.seller}
+                </p>
               </div>
             </div>
           ))}
